@@ -42,6 +42,7 @@ export const useSession = (workSubject: string) => {
           'Do not say fillers like "Nothing else stands out"',
           "You will not comment on issues covered by a linter, a compiler or automated tests",
           'Do not announce what you will do, like "Let me check ..."',
+          "Reiterate what we are going to work on",
         ].join(". "),
         options: {
           pathToClaudeCodeExecutable:
