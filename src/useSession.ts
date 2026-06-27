@@ -69,13 +69,13 @@ export const useSession = (workSubject: string) => {
     });
   }, []);
 
-  const onFileUpdated = (filepath: string) => {
+  const onFileEvent = (event: string) => (filepath: string) => {
     const session = sessionId.current;
 
     if (ready.current && session)
       void new Promise(async () => {
         for await (const message of query({
-          prompt: `This file just got updated: ${filepath}`,
+          prompt: `This file just got ${event}: ${filepath}`,
           options: {
             pathToClaudeCodeExecutable:
               process.env["CLAUDE_CODE_PATH"] ?? "claude",
@@ -96,32 +96,9 @@ export const useSession = (workSubject: string) => {
       });
   };
 
-  const onFileCreated = (filepath: string) => {
-    const session = sessionId.current;
-
-    if (ready.current && session)
-      void new Promise(async () => {
-        for await (const message of query({
-          prompt: `This file just got created: ${filepath}`,
-          options: {
-            pathToClaudeCodeExecutable:
-              process.env["CLAUDE_CODE_PATH"] ?? "claude",
-            resume: session,
-            canUseTool,
-          },
-        })) {
-          if (message.type === "assistant" && message.message?.content) {
-            for (const block of message.message.content) {
-              if ("text" in block) {
-                setMessages((messages) => messages.concat(block.text));
-              }
-            }
-          } else if (message.type === "result") {
-            console.log(`Done: ${message.subtype}`);
-          }
-        }
-      });
+  return {
+    messages,
+    onFileUpdated: onFileEvent("updated"),
+    onFileCreated: onFileEvent("created"),
   };
-
-  return { messages, onFileUpdated, onFileCreated };
 };
