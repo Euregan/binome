@@ -25,10 +25,4 @@ jobs:
           node-version: "24"
           registry-url: "https://registry.npmjs.org"
           package-manager-cache: false
-      - name: Checking npm version
-        run: npm --version
-      - name: Update npm to latest version for OIDC support
-        run: pnpm add -g npm@latest
-      - name: Checking npm version
-        run: npm --version
       - run: npm publish --provenance
