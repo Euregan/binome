@@ -1,6 +1,6 @@
 {
   "name": "binome",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Peer programming with Claude",
   "bin": "./dist/cli.js",
   "scripts": {
