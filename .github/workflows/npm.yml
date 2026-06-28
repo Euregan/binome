@@ -22,4 +22,6 @@ jobs:
       - run: pnpm run build
       - name: Update npm to latest version for OIDC support
         run: pnpm add -g npm@latest
+      - name: Checking npm version
+        run: npm --version
       - run: npm publish --provenance
