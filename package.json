@@ -1,14 +1,15 @@
 {
   "name": "binome",
   "version": "0.1.2",
-  "description": "",
-  "main": "index.js",
+  "description": "Peer programming with Claude",
+  "bin": "./dist/cli.js",
   "scripts": {
     "dev": "tsx --watch src/cli.tsx",
-    "start": "tsx src/cli.tsx"
+    "start": "tsx src/cli.tsx",
+    "build": "tsc && chmod +x dist/cli.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Valentin Manceaux-Panot",
   "license": "ISC",
   "type": "module",
   "dependencies": {

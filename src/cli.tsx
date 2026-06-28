@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { render } from "ink";
 import { Binome } from "./Binome.js";
 

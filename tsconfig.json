@@ -3,6 +3,8 @@
     "module": "node20",
     "moduleResolution": "node16",
     "moduleDetection": "force",
+    "rootDir": "./src",
+    "outDir": "./dist",
     "target": "esnext",
     "lib": ["DOM", "DOM.Iterable", "ES2023"],
     "jsx": "react-jsx",
